@@ -1,17 +1,35 @@
 # What rft is
 
-rft (Reasoning Flow Tree) is a plugin for Claude Code that keeps the reasoning of a research
-project readable. Every experiment you run and every idea you consider becomes one short note,
-each note hangs under the one it came from, and Claude keeps the notes up to date as you work
-together. You see the result as a live tree in your browser.
+Claude can write the code of a research project, launch its experiments and read its papers
+faster than you can follow them. Every researcher now answers a question, on purpose or not:
+what is the best way to do research with an AI's help, so that it is still your research?
+
+rft (Reasoning Flow Tree) is one answer, built as a plugin for Claude Code. Its position is that
+the work can be handed over and the reasoning cannot. The research stays yours as long as you
+know what was tried, what it found and why, so Claude writes that down as it works. Every
+experiment and every idea becomes one short note, each note hangs under the one it came from,
+and you read the result as a live tree in your browser.
 
 ![The tree view of the demo project: directions, experiments, references and a theory note, each under the note it came from](images/tree.png)
 
-## The idea
+## How rft answers it
+
+1. **Claude does the work and keeps the record.** It adds an experiment's note before launching
+    it, records the result when it is in, and adds a direction for each new idea. You do not fill
+    in forms.
+2. **You read and steer.** The tree in a browser follows the notes as they change: click a note
+    to read it, filter by tag or status, group the notes into lines of research. At any point you
+    can see where the project stands and say where it goes next.
+3. **Only you verify.** A note is verified when you have checked what it claims. Claude can
+    suggest it and cannot do it. Only verified notes become snippets, the pieces of LaTeX that
+    rft's documents are written from.
+
+## The tree
 
 Three months into a project, the code and the results are still there, but the reasons are gone:
-why this experiment, what it ruled out, which idea was dropped and why. rft writes that down as
-it happens, in four kinds of notes.
+why this experiment, what it ruled out, which idea was dropped and why. With an assistant doing
+the work this happens sooner, because more is run than anyone remembers the reason for. rft
+writes the reasons down as they happen, in four kinds of notes.
 
 | Note | Id | What it holds |
 |---|---|---|
@@ -24,12 +42,8 @@ Each note has a parent, so the notes form a tree: a question leads to an experim
 to two new ideas, one of them to the next experiment. The tree shows what was tried and also why
 a path was not taken.
 
-## What you get
+## What else you get
 
-- **Claude keeps the tree.** It adds an experiment's note before launching it, records the
-  result when it is in, and adds a direction for each new idea. You do not fill in forms.
-- **A live view.** The tree in a browser: click a note to read it, filter by tag or status,
-  group the notes into lines of research. It follows the notes as they change.
 - **Plain files.** The notes are markdown in a folder of your project (`vault/` by default).
   They work in Obsidian, in git and in any editor, and they are the source of truth.
 - **More when you want it.** A kanban and a calendar over the same notes, a queue for
