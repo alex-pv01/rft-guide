@@ -1,0 +1,40 @@
+/* The guide wears the colours of rft's own page (the plugin's web/app.css), light and dark, and its
+   fonts (the system's). They are copied here, not shared: a change to the page's palette is made
+   in both places. Code sits on the panel colour of the page's framed documents (web/frame.css). */
+:root {
+  --md-text-font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --md-code-font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* the note types and statuses, for the pages that talk about them */
+  --rft-direction: #7048e8; --rft-experiment: #0ca678; --rft-reference: #d6336c;
+  --rft-theory: #3b5bdb; --rft-literature: #0c8599;
+}
+[data-md-color-scheme="default"][data-md-color-primary] {
+  --rft-bg: #fbfbfd; --rft-panel: #ffffff; --rft-fg: #1f2328; --rft-muted: #656d76;
+  --rft-line: #d8dde4; --rft-accent: #7048e8; --rft-code-bg: #f6f7f9;
+}
+[data-md-color-scheme="slate"][data-md-color-primary] {
+  --rft-bg: #0f1115; --rft-panel: #171a21; --rft-fg: #e6e8ee; --rft-muted: #8b93a3;
+  --rft-line: #2a2f3a; --rft-accent: #9775fa; --rft-code-bg: #1e222b;
+  --rft-direction: #9775fa; --rft-experiment: #20c997; --rft-reference: #f06595;
+  --rft-theory: #5c7cfa; --rft-literature: #22b8cf;
+}
+[data-md-color-scheme][data-md-color-primary] {
+  --md-default-bg-color: var(--rft-bg);
+  --md-default-bg-color--light: var(--rft-panel);
+  --md-default-fg-color: var(--rft-fg);
+  --md-default-fg-color--light: var(--rft-muted);
+  --md-default-fg-color--lighter: color-mix(in srgb, var(--rft-muted) 55%, transparent);
+  --md-default-fg-color--lightest: var(--rft-line);
+  --md-typeset-color: var(--rft-fg);
+  --md-typeset-a-color: var(--rft-accent);
+  --md-primary-fg-color: var(--rft-accent);
+  --md-primary-fg-color--light: var(--rft-accent);
+  --md-primary-fg-color--dark: var(--rft-accent);
+  --md-accent-fg-color: var(--rft-accent);
+  --md-accent-fg-color--transparent: color-mix(in srgb, var(--rft-accent) 10%, transparent);
+  --md-code-bg-color: var(--rft-code-bg);
+  --md-code-fg-color: var(--rft-fg);
+  --md-typeset-table-color: var(--rft-line);
+  --md-footer-bg-color: var(--rft-panel);
+  --md-footer-bg-color--dark: var(--rft-panel);
+}

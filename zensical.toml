@@ -1,0 +1,76 @@
+[project]
+site_name = "rft"
+site_description = "Reasoning Flow Tree: a research project's experiments and ideas kept as a tree of notes, by Claude Code."
+site_url = "https://alex-pv01.github.io/rft-guide/"
+repo_url = "https://github.com/alex-pv01/rft-plugin"
+repo_name = "alex-pv01/rft-plugin"
+extra_css = ["stylesheets/rft.css"]
+
+nav = [
+  { "Start" = [
+    { "What rft is" = "index.md" },
+    { "Install" = "start/install.md" },
+    { "First run on the demo" = "start/first-run.md" },
+    { "Activate it in your project" = "start/activate.md" },
+    { "Notes in one folder, code in others" = "start/notes-and-code.md" },
+  ] },
+  { "Using rft" = [
+    { "What changes once it is active" = "using/once-active.md" },
+    { "The tree view" = "using/tree-view.md" },
+    { "The inbox and reading notes" = "using/inbox.md" },
+    { "The kanban and priorities" = "using/kanban.md" },
+    { "Deadlines, meetings and the calendar" = "using/calendar.md" },
+    { "The experiment queue" = "using/queue.md" },
+    { "Concepts and artifacts" = "using/concepts.md" },
+    { "Code repos" = "using/code-repos.md" },
+    { "Notebooks and figures" = "using/notebooks-figures.md" },
+    { "Snippets and documents" = "using/documents.md" },
+    { "Slides" = "using/slides.md" },
+    { "Handoffs" = "using/handoffs.md" },
+  ] },
+  { "Reference" = [
+    { "Commands" = "reference/commands.md" },
+    { "Statuses" = "reference/statuses.md" },
+    { "Configuration" = "reference/configuration.md" },
+    { "Obsidian" = "reference/obsidian.md" },
+  ] },
+  { "Contributing" = "contributing.md" },
+]
+
+[project.theme]
+language = "en"
+# the page's own fonts: the system's, set in stylesheets/rft.css
+font = false
+features = [
+  "content.code.copy",
+  "navigation.footer",
+  "navigation.sections",
+  "navigation.top",
+  "navigation.tracking",
+  "search.highlight",
+]
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
+
+# Few extensions on purpose: the pages came from a README written in plain GitHub markdown, and
+# an extension that gives ~, ^, == or $ a meaning would change how that text reads.
+[project.markdown_extensions]
+admonition = {}
+attr_list = {}
+md_in_html = {}
+tables = {}
+toc.permalink = true
+pymdownx.highlight.anchor_linenums = true
+pymdownx.highlight.pygments_lang_class = true
+pymdownx.inlinehilite = {}
+pymdownx.superfences = {}
