@@ -23,7 +23,7 @@ from chrome import Chrome
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "images"
-WIDTH, HEIGHT = 1200, 760
+WIDTH, HEIGHT = 1200, 900
 
 # clicks as a person makes them
 CLICK_NODE = "(id => [...document.querySelectorAll('#canvas g.node')].find(g => g.__data__.data.id === id).dispatchEvent(new MouseEvent('click', {bubbles: true})))"
