@@ -54,6 +54,19 @@ class AgentsPage(unittest.TestCase):
         # while the code's own note on Codex says its locked sandbox was not seen working, so does the page
         if "not something seen here" in rft_agents.PRESET_NOTES.get("codex", ""):
             self.assertIn("was not seen here", self.page)
+        # the page's words for the setup's buttons are the ones the page of the plugin draws
+        dialog = (PLUGIN / "web" / "agents.js").read_text(encoding="utf-8")
+        for button in ("Set up an agent", "Agents…", "List its models", "Change", "Remove", "What it is", "Answers by", "Process with"):
+            self.assertIn(button, self.page)
+            self.assertIn(button, dialog)
+        for where in ("runs on this machine", "runs here, sends text to its provider"):
+            self.assertIn(where, self.page)
+            self.assertIn(where, (PLUGIN / "server" / "rft_agents.py").read_text(encoding="utf-8"))
+        # what may be added from the page is a model and the ready-made harnesses, as the page says
+        self.assertEqual(rft_agents.FORM_KINDS, ("model", "claude-code", "codex"))
+        # the time limits it states in words
+        self.assertEqual((rft_agents.LIMITS["thread"], rft_agents.LIMITS["process"]), (120, 600))
+        self.assertIn("two minutes for a thread, ten for Process", self.page)
         # nothing of one user's machine
         for word in ("alexpv", "/media/", "/home/"):
             self.assertNotIn(word, self.page)
