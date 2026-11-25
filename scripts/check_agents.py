@@ -44,9 +44,16 @@ class AgentsPage(unittest.TestCase):
         self.assertIn("DEEPSEEK_API_KEY is not set", setup_of(example, env={}).agents["deepseek"].problem)
 
     def test_it_names_the_file_the_grants_and_what_was_never_run(self):
-        for said in ("~/.config/rft/agents.toml", "RFT_AGENTS", '`"text"`', '`"read"`', '`"change"`', "never run", "tests/fixtures/agents/SCENARIOS.md", "Discuss"):
+        for said in ("~/.config/rft/agents.toml", "RFT_AGENTS", '`"text"`', '`"read"`', '`"change"`', "tests/fixtures/agents/SCENARIOS.md", "Discuss"):
             self.assertIn(said, self.page)
-        self.assertEqual(rft_agents.UNVERIFIED, ("codex",))
+        # what the code says was never run, the page says too, and it claims that of nothing else
+        if rft_agents.UNVERIFIED:
+            self.assertIn("never run", self.page)
+        else:
+            self.assertNotIn("never run a task", self.page)
+        # while the code's own note on Codex says its locked sandbox was not seen working, so does the page
+        if "not something seen here" in rft_agents.PRESET_NOTES.get("codex", ""):
+            self.assertIn("was not seen here", self.page)
         # nothing of one user's machine
         for word in ("alexpv", "/media/", "/home/"):
             self.assertNotIn(word, self.page)

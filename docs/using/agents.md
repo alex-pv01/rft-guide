@@ -64,9 +64,12 @@ process_seconds = 900
 
 `kind = "claude-code"` and `kind = "codex"` are ready-made harness entries (`model = "..."`
 picks the model). The Claude Code one was tried: locked, it has its reading tools and the web,
-and cannot write a file. **The Codex one has never run a task**: its flags are those Codex's
-own help lists (its read-only sandbox, live web search), but that it truly cannot write when
-locked was not checked, and the page marks it so.
+and cannot write a file. The Codex one was tried once, on 2026-11-25: launched locked on a demo
+vault, it answered a thread and processed a paper with its web search, and its three attempts to
+create a file failed. **On that machine its sandbox could not start at all** (Ubuntu 24.04
+restricts the kind of sandbox Codex uses), so it could run no command and read no note either.
+That a working read-only sandbox reads the project and cannot write is what Codex's
+documentation says; it was not seen here.
 
 In the page, a picker stands beside the buttons that ask: above a note's threads and the
 Manuscript's (**Answers by**), and above the inbox's list (**Process with**). It lists the
