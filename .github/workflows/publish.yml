@@ -21,6 +21,12 @@ jobs:
       - run: pip install -r requirements.txt
       - run: zensical build --clean --strict
       - run: python scripts/check_built.py
+      # the Agents page's example is read with the plugin's own code
+      - uses: actions/checkout@v7
+        with:
+          repository: alex-pv01/rft-plugin
+          path: rft-plugin
+      - run: python scripts/check_agents.py rft-plugin
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site
