@@ -5,24 +5,33 @@ faster than you can follow them. Every researcher now answers a question, on pur
 what is the best way to do research with an AI's help, so that it is still your research?
 
 rft (Reasoning Flow Tree) is one answer, built as a plugin for Claude Code. Its position is that
-the work can be handed over and the reasoning cannot. The research stays yours as long as you
-know what was tried, what it found and why, so Claude writes that down as it works. Every
-experiment and every idea becomes one short note, each note hangs under the one it came from,
-and you read the result as a live tree in your browser.
+you stay in charge and Claude works where you can see it. Every experiment and every idea
+becomes one short note, each note hangs under the one it came from, and you read them as a live
+tree in your browser. From there you monitor Claude, steer it, correct it, direct it and limit
+it, and it still does real work for you.
 
 ![The tree view of the demo project: directions, experiments, references and a theory note, each under the note it came from](images/tree.png)
 
 ## How rft answers it
 
-1. **Claude does the work and keeps the record.** It adds an experiment's note before launching
-    it, records the result when it is in, and adds a direction for each new idea. You do not fill
-    in forms.
-2. **You read and steer.** The tree in a browser follows the notes as they change: click a note
-    to read it, filter by tag or status, group the notes into lines of research. At any point you
-    can see where the project stands and say where it goes next.
-3. **Only you verify.** A note is verified when you have checked what it claims. Claude can
-    suggest it and cannot do it. Only verified notes become snippets, the pieces of LaTeX that
-    rft's documents are written from.
+Claude runs the experiments and keeps the notes, so you do not fill in forms. What rft adds is
+your hold on that work.
+
+- **You see what it does.** An experiment gets its note before it is launched and its result
+  when it is in, and each new idea gets a note under the one it came from. The
+  [tree view](using/tree-view.md) follows the notes as they change, so you can read what Claude
+  is doing, and why, while it does it.
+- **You say where it goes.** The project starts from your question, and what matters most is
+  yours to say: a note's [priority](using/kanban.md) is set by you alone, and Claude only
+  suggests one. A dropped idea stays in the tree, so the path not taken is on record.
+- **You correct it.** Edit a note's text in the page, or select a part of it and leave a comment
+  or a suggestion, as in Overleaf. Ask Claude on that thread and it replies there: the note
+  changes only when you accept.
+- **You set its limits.** Lock a note and Claude can only suggest changes to its text: the
+  plugin refuses its edits. Only you mark a note [verified](reference/statuses.md), and only verified
+  notes become the snippets that rft's documents are written from. Any other model you bring in
+  works under a [grant](using/agents.md) you give it: answer only, read the project, or change
+  it.
 
 ## The tree
 
