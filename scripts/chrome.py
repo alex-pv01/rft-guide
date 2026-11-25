@@ -34,7 +34,7 @@ class Chrome:
         self.port = free_port()
         self.profile = tempfile.mkdtemp(prefix="rft-guide-chrome-")
         self.proc = subprocess.Popen(
-            [find_chrome(), "--headless=new", "--no-sandbox", "--disable-gpu", "--no-first-run", "--hide-scrollbars",
+            [find_chrome(), "--headless=new", "--no-sandbox", "--disable-gpu", "--no-first-run", "--hide-scrollbars", "--lang=en-US",
              f"--remote-debugging-port={self.port}", f"--user-data-dir={self.profile}",
              f"--window-size={width},{height}", "about:blank"],
             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -85,9 +85,12 @@ class Chrome:
             time.sleep(0.1)
         raise SystemExit(f"Waited {seconds}s and this never held: {condition}")
 
+    def capture(self):
+        return base64.b64decode(self.call("Page.captureScreenshot", format="png")["data"])
+
     def shot(self, path):
         Path(path).parent.mkdir(parents=True, exist_ok=True)
-        Path(path).write_bytes(base64.b64decode(self.call("Page.captureScreenshot", format="png")["data"]))
+        Path(path).write_bytes(self.capture())
 
     def close(self):
         try:
