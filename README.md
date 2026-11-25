@@ -24,6 +24,12 @@ The pages are plain markdown under `docs/`, and `zensical.toml` holds the naviga
 - `docs/stylesheets/rft.css`: the colours of rft's own page, copied from the plugin's
   `web/app.css`. A change to the page's palette is made in both places.
 - `scripts/chrome.py`: headless Chromium, for the screenshots.
+- `scripts/check_built.py`: every picture and local link of the built site leads to a file. The
+  strict build stops on a broken link; it does not notice a missing picture.
+- `scripts/split_readme.py` and `scripts/check_move.py`: for the move out of the plugin's long
+  README only. The first writes the pages from it; the second checks that no paragraph was lost
+  and that each page reads as the README did on GitHub (`pip install -r requirements-dev.txt`).
+  Both are deleted once the pages here are the source.
 
 ## When the plugin changes
 
