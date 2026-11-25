@@ -1,44 +1,42 @@
 # What rft is
 
-Claude can write the code of a research project, launch its experiments and read its papers
-faster than you can follow them. Every researcher now answers a question, on purpose or not:
-what is the best way to do research with an AI's help, so that it is still your research?
+What is the best way to do research now that an AI can help with it, so that it is still your
+research? rft's answer: you build a knowledge base of your project, and your agents work from
+it.
 
-rft (Reasoning Flow Tree) is one answer, built as a plugin for Claude Code. Its position is that
-you stay in charge and Claude works where you can see it. Every experiment and every idea
-becomes one short note, each note hangs under the one it came from, and you read them as a live
-tree in your browser. From there you monitor Claude, steer it, correct it, direct it and limit
-it, and it still does real work for you.
+rft (Reasoning Flow Tree) is a tool for keeping track of a research project: the questions you
+ask, the experiments you run, the papers you read and what you conclude from them. Each becomes
+one short note under the note it came from. Together the notes are the project's knowledge
+base, a tree you read in your browser and plain files in your project. rft runs as a plugin for
+Claude Code, so the same knowledge base is what Claude and your other agents start from: they
+know what was tried and why, add what they do to it, and stay within what you allow.
 
 ![The tree view of the demo project: directions, experiments, references and a theory note, each under the note it came from](images/tree.png)
 
 ## How rft answers it
 
-Claude runs the experiments and keeps the notes, so you do not fill in forms. What rft adds is
-your hold on that work.
-
-- **You see what it does.** An experiment gets its note before it is launched and its result
-  when it is in, and each new idea gets a note under the one it came from. The
-  [tree view](using/tree-view.md) follows the notes as they change, so you can read what Claude
-  is doing, and why, while it does it.
-- **You say where it goes.** The project starts from your question, and what matters most is
-  yours to say: a note's [priority](using/kanban.md) is set by you alone, and Claude only
-  suggests one. A dropped idea stays in the tree, so the path not taken is on record.
-- **You correct it.** Edit a note's text in the page, or select a part of it and leave a comment
-  or a suggestion, as in Overleaf. Ask Claude on that thread and it replies there: the note
-  changes only when you accept.
-- **You set its limits.** Lock a note and Claude can only suggest changes to its text: the
-  plugin refuses its edits. Only you mark a note [verified](reference/statuses.md), and only verified
-  notes become the snippets that rft's documents are written from. Any other model you bring in
-  works under a [grant](using/agents.md) you give it: answer only, read the project, or change
-  it.
+- **Your research in one place.** Questions, experiments, papers and arguments, each under the
+  note it came from, with what was found and what was dropped. You add a note from the
+  [tree view](using/tree-view.md) or edit one in any editor; papers to read wait in the
+  [inbox](using/inbox.md); a kanban and a calendar show the same notes by status and by date.
+- **A knowledge base that builds up.** A note you have checked is marked
+  [verified](reference/statuses.md), by you and no one else. Notes group into lines of research,
+  each with its page of results, and only verified notes become the snippets that papers are
+  written from. What you know, and how you came to know it, stays in one place.
+- **The same knowledge base for your agents.** Claude starts each session from a compact copy
+  of the tree, so it knows what was tried and why and does not begin from nothing. What it does
+  goes into the same record: an experiment gets its note before it is launched and its result
+  when it is in.
+- **You keep hold of them.** A note's [priority](using/kanban.md) is set by you alone. You
+  comment or suggest on a part of a note, and it changes only when you accept. Lock a note and
+  Claude can only suggest changes to its text. Any other model works under a
+  [grant](using/agents.md) you give it: answer only, read the project, or change it.
 
 ## The tree
 
 Three months into a project, the code and the results are still there, but the reasons are gone:
-why this experiment, what it ruled out, which idea was dropped and why. With an assistant doing
-the work this happens sooner, because more is run than anyone remembers the reason for. rft
-writes the reasons down as they happen, in four kinds of notes.
+why this experiment, what it ruled out, which idea was dropped and why. With rft they are on
+record as they happen, in four kinds of notes.
 
 | Note | Id | What it holds |
 |---|---|---|

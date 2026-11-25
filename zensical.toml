@@ -1,6 +1,6 @@
 [project]
 site_name = "rft"
-site_description = "Reasoning Flow Tree: a research project's experiments and ideas kept as a tree of notes, by Claude Code."
+site_description = "Reasoning Flow Tree: a research project's experiments and ideas kept as a tree of notes, a knowledge base for you and for your agents in Claude Code."
 site_url = "https://alex-pv01.github.io/rft-guide/"
 repo_url = "https://github.com/alex-pv01/rft-plugin"
 repo_name = "alex-pv01/rft-plugin"
