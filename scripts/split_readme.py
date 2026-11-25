@@ -31,9 +31,6 @@ INBOX = "(the inbox, from The tree view)"
 
 # page, its title when it joins several sections (None: the section's own heading), the sections
 PAGES = [
-    ("start/install.md", None, ["Install"]),
-    ("start/activate.md", None, ["Activate it in a project"]),
-    ("start/notes-and-code.md", None, ["The notes in one folder, the code in others"]),
     ("using/once-active.md", None, ["What changes once it is active"]),
     ("using/tree-view.md", None, ["The tree view"]),
     ("using/inbox.md", "The inbox and reading notes", [INBOX]),
@@ -56,8 +53,18 @@ PAGES = [
 ELSEWHERE = {
     INTRO: "written anew: the guide's first page and the short README",
     "Usage": "a heading with no text of its own",
+    "Install": "written anew: start/install.md",
+    "Activate it in a project": "written anew: start/activate.md",
+    "The notes in one folder, the code in others": "written anew: start/notes-and-code.md",
     "Development": "CONTRIBUTING.md in the plugin's repository",
     "License": "the short README",
+}
+
+# sections written anew: where a link to one of them leads
+NEW_PAGES = {
+    "Install": "start/install.md",
+    "Activate it in a project": "start/activate.md",
+    "The notes in one folder, the code in others": "start/notes-and-code.md",
 }
 
 # a fence opens or closes a code block; a line that starts with backticks and has more of them
@@ -277,6 +284,8 @@ def main():
         for t in titles:
             if t != INBOX:
                 anchors[slug(t)] = (page, slug(t) if title else "")
+    for t, page in NEW_PAGES.items():
+        anchors[slug(t)] = (page, "")
     for t in ELSEWHERE:
         anchors.setdefault(slug(t), (None, ""))
 
