@@ -23,7 +23,7 @@ from chrome import Chrome
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "images"
-WIDTH, HEIGHT = 1440, 900
+WIDTH, HEIGHT = 1200, 760
 
 # clicks as a person makes them
 CLICK_NODE = "(id => [...document.querySelectorAll('#canvas g.node')].find(g => g.__data__.data.id === id).dispatchEvent(new MouseEvent('click', {bubbles: true})))"
@@ -32,7 +32,9 @@ TICK_TAG = "(tag => [...document.querySelectorAll('#filters label')].find(l => l
 SHOTS = [
     # name, steps, what must hold before the picture is taken
     ("tree", [], "document.querySelectorAll('#canvas g.node').length > 10"),
-    ("note", [CLICK_NODE + "('E05')"], "!document.getElementById('drawer').hidden && document.querySelector('#note h1, #note h2, #note p')"),
+    # the note opens over the right of the window: the tree is dragged left, into what is left of it
+    ("note", [CLICK_NODE + "('E05')"], "!document.getElementById('drawer').hidden && document.querySelector('#note h1, #note h2, #note p')",
+     [("drag", 300, 150, 60, 150)]),
     ("filters", ["document.getElementById('filters-toggle').click()", TICK_TAG + "('augmentation')"],
      "!document.getElementById('filters').hidden && !document.getElementById('filter-status').hidden"),
     ("regions", ["document.getElementById('cmode').click()"], "/regions/.test(document.getElementById('cmode').title.split('(')[0])"),
@@ -63,7 +65,7 @@ def main():
     try:
         url = re.search(r"RFT_SERVER_URL (\S+)", server.stdout.readline()).group(1)
         chrome = Chrome(WIDTH, HEIGHT, scheme="light", scale=2)
-        for name, steps, ready in SHOTS:
+        for name, steps, ready, *rest in SHOTS:
             if only and name not in only:
                 continue
             # each picture from a fresh start: the page remembers which panels were open
@@ -75,6 +77,15 @@ def main():
                 chrome.js(step)
                 time.sleep(0.5)
             chrome.wait(ready)
+            # the whole tree in the window: the Fit button, when it is the one on offer (its other
+            # state centres on the root)
+            chrome.js("(b => !document.getElementById('canvas').hidden && /^Fit/.test(b.title) && b.click())(document.getElementById('fit'))")
+            time.sleep(0.8)
+            # what is done once the tree is in place: a drag, as ("drag", from x, from y, to x, to y)
+            for step in (rest[0] if rest else []):
+                if step[0] == "drag":
+                    chrome.drag(*step[1:])
+                time.sleep(0.5)
             # the page animates a change of view and loads a note after the click: the picture is
             # taken when two captures in a row are the same, byte for byte
             last = None

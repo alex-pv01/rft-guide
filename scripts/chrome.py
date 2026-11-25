@@ -37,7 +37,9 @@ class Chrome:
             [find_chrome(), "--headless=new", "--no-sandbox", "--disable-gpu", "--no-first-run", "--hide-scrollbars", "--lang=en-US",
              f"--remote-debugging-port={self.port}", f"--user-data-dir={self.profile}",
              f"--window-size={width},{height}", "about:blank"],
-            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+            # dates and numbers as an English reader sees them, whatever this machine's language
+            env={**os.environ, "LANG": "en_US.UTF-8", "LC_ALL": "en_US.UTF-8", "LANGUAGE": "en_US"})
         for _ in range(100):
             try:
                 tabs = json.load(urllib.request.urlopen(f"http://127.0.0.1:{self.port}/json"))
@@ -84,6 +86,14 @@ class Chrome:
                 pass
             time.sleep(0.1)
         raise SystemExit(f"Waited {seconds}s and this never held: {condition}")
+
+    def drag(self, x1, y1, x2, y2, steps=8):
+        """Press at one point of the page, move to another and let go, as a hand on a mouse does."""
+        self.call("Input.dispatchMouseEvent", type="mouseMoved", x=x1, y=y1)
+        self.call("Input.dispatchMouseEvent", type="mousePressed", x=x1, y=y1, button="left", clickCount=1)
+        for k in range(1, steps + 1):
+            self.call("Input.dispatchMouseEvent", type="mouseMoved", x=x1 + (x2 - x1) * k / steps, y=y1 + (y2 - y1) * k / steps, button="left")
+        self.call("Input.dispatchMouseEvent", type="mouseReleased", x=x2, y=y2, button="left", clickCount=1)
 
     def capture(self):
         return base64.b64decode(self.call("Page.captureScreenshot", format="png")["data"])

@@ -40,6 +40,9 @@ nav = [
 
 [project.theme]
 language = "en"
+# rft's own mark: the tree icon of its page (the page's favicon and its Tree button), unchanged
+logo = "images/logo.svg"
+favicon = "images/logo.svg"
 # the page's own fonts: the system's, set in stylesheets/rft.css
 font = false
 features = [

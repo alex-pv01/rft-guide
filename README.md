@@ -24,7 +24,7 @@ The pages are plain markdown under `docs/`, and `zensical.toml` holds the naviga
 - `docs/stylesheets/rft.css`: the colours of rft's own page, copied from the plugin's
   `web/app.css`. A change to the page's palette is made in both places.
 - `scripts/shots.py`: retakes every screenshot under `docs/images/` from the plugin's demo project
-  (`examples/demo`), in headless Chromium at 1440 × 900 in the light theme. Run it when the page's
+  (`examples/demo`), in headless Chromium at 1200 × 760 in the light theme. Run it when the page's
   look changes; a new picture is one more entry in its `SHOTS` list. Two runs give the same files.
 - `scripts/chrome.py`: headless Chromium, for the screenshots.
 - `scripts/check_built.py`: every picture and local link of the built site leads to a file. The
