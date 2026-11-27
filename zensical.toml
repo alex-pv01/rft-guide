@@ -17,6 +17,7 @@ nav = [
   { "Using rft" = [
     { "What changes once it is active" = "using/once-active.md" },
     { "The tree view" = "using/tree-view.md" },
+    { "Grilling a direction" = "using/grilling.md" },
     { "The inbox and reading notes" = "using/inbox.md" },
     { "Agents" = "using/agents.md" },
     { "The kanban and priorities" = "using/kanban.md" },
