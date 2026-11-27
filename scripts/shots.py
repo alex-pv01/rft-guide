@@ -14,11 +14,11 @@ import re
 import shutil
 import subprocess
 import sys
-import tempfile
 import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import procs
 from chrome import Chrome
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -55,9 +55,9 @@ def main():
     if not (plugin / "server" / "rft_server.py").exists():
         sys.exit(f"{plugin} is not the plugin's folder (no server/rft_server.py).")
 
-    tmp = Path(tempfile.mkdtemp(prefix="rft-guide-shots-"))
+    tmp = procs.folder("rft-guide-shots-")
     shutil.copytree(plugin / "examples" / "demo", tmp / "demo")
-    server = subprocess.Popen(
+    server = procs.start(
         [sys.executable, str(plugin / "server" / "rft_server.py"), "--vault", str(tmp / "demo" / "vault"), "--web", str(plugin / "web"),
          "--port", "0", "--project", "small-data-regularisation", "--no-watch"],
         stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True)
@@ -103,8 +103,7 @@ def main():
     finally:
         if chrome:
             chrome.close()
-        server.terminate()
-        server.wait(10)
+        procs.stop(server)
         shutil.rmtree(tmp, ignore_errors=True)
 
 

@@ -3,10 +3,13 @@
 It needs Chromium (Playwright's under ~/.cache/ms-playwright, one on PATH, or RFT_CHROME) and the
 websocket-client module. The plugin's own page tests drive Chromium the same way.
 """
-import base64, glob, json, os, shutil, socket, subprocess, tempfile, time, urllib.request
+import base64, glob, json, os, shutil, socket, subprocess, sys, time, urllib.request
 from pathlib import Path
 
 import websocket
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import procs  # noqa: E402
 
 
 def find_chrome():
@@ -32,14 +35,22 @@ class Chrome:
 
     def __init__(self, width=1280, height=800, scheme="light", scale=2):
         self.port = free_port()
-        self.profile = tempfile.mkdtemp(prefix="rft-guide-chrome-")
-        self.proc = subprocess.Popen(
+        self.ws = None
+        self.profile = procs.folder("rft-guide-chrome-")
+        self.proc = procs.start(
             [find_chrome(), "--headless=new", "--no-sandbox", "--disable-gpu", "--no-first-run", "--hide-scrollbars", "--lang=en-US",
              f"--remote-debugging-port={self.port}", f"--user-data-dir={self.profile}",
              f"--window-size={width},{height}", "about:blank"],
             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
             # dates and numbers as an English reader sees them, whatever this machine's language
             env={**os.environ, "LANG": "en_US.UTF-8", "LC_ALL": "en_US.UTF-8", "LANGUAGE": "en_US"})
+        try:
+            self.connect(width, height, scheme, scale)
+        except BaseException:  # a browser that did not come up is not left running
+            self.close()
+            raise
+
+    def connect(self, width, height, scheme, scale):
         for _ in range(100):
             try:
                 tabs = json.load(urllib.request.urlopen(f"http://127.0.0.1:{self.port}/json"))
@@ -104,8 +115,8 @@ class Chrome:
 
     def close(self):
         try:
-            self.ws.close()
+            if self.ws:
+                self.ws.close()
         finally:
-            self.proc.terminate()
-            self.proc.wait(timeout=10)
+            procs.stop(self.proc)
             shutil.rmtree(self.profile, ignore_errors=True)
