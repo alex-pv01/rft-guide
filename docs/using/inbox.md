@@ -11,7 +11,8 @@ Obsidian.
 Paste a link in the field at the panel's top, type `/rft-inbox <link> [reading priority] [why]`
 in the chat, or ask Claude to save it; a link already in the inbox, processed before or in a
 reference note's **Source** is said to be there and not added twice, and an arXiv paper gets its
-title from arXiv a moment later.
+title from arXiv a moment later. A link you discarded before comes back as the item it was (see
+[Discarding an item](#discarding-an-item)).
 
 A literature search saves every paper it lists, and those it found and did not read, here.
 `/rft-inbox` alone prints the inbox, and `/rft-view` leaves it out.
@@ -23,7 +24,7 @@ limits, not a note's priority and never carried to one. It shows as an icon, thr
 many filled as it presses and a red **!** for urgent, and a tap on it steps to the next (none,
 low, medium, high, urgent, none again), written a moment after the last tap. The list is ordered
 by **Priority** or by **Date**; a tap on an item's why edits it, and **✕** (asked twice)
-discards it.
+[discards it](#discarding-an-item).
 
 ## Reading notes
 
@@ -54,10 +55,32 @@ on. You pick the **outcome**: a reference note, an entry in a literature note, a
 citing its reference, discard, or later. Claude writes what that needs, with your quotes word
 for word (the item is not closed while one is missing or changed) and your own lines rephrased
 only as you accept in the chat, and closes the item, which moves under `## Processed` with its
-date and what it became (`→ R15`, or `— discarded: why`); its reading note is removed, what it
-held being in the tree. A discard asks first, in the chat and on **✕**, while the note holds
-something of yours. *Later* leaves the item in the inbox with its brief (shown at a tap on
-**briefed**), its reading note and its read mark.
+date and what it became (`→ R15`); its reading note is removed, what it held being in the tree.
+*Later* leaves the item in the inbox with its brief (shown at a tap on **briefed**), its reading
+note and its read mark.
+
+## Discarding an item
+
+A discard, by **✕** on the row or picked as the outcome in the chat, takes the item out of the
+inbox and loses nothing, so nothing more is asked, whatever its reading note holds. The item's
+lines move, as you had them, under `## Discarded` in `Inbox.md`, with one line more that says
+when and, from the chat, why:
+
+```markdown
+## Discarded
+
+- [Mixup at scale](https://arxiv.org/abs/2406.01234) — maybe relevant to D04 · high · added 2026-11-16
+  - discarded 2026-11-27: superseded by R07
+```
+
+Its reading note moves to `Reading notes/Discarded/`. A discarded item is not listed and not
+counted, and Claude can read nothing of it.
+
+Only you bring it back: paste its link in the panel's field again, type `/rft-inbox <link>`, or
+ask Claude to. It returns at the end of the list as the item it was, with its why, reading
+priority, read mark, brief and reading note. A later literature search that finds the paper again
+leaves it discarded and says so. The discarded items are yours to clear: delete their lines and
+files when you no longer want them.
 
 ## Without a chat
 
