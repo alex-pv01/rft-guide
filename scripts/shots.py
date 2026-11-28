@@ -10,6 +10,7 @@ each view up with the clicks a person would make, and saves it under docs/images
 A new picture is one more entry in SHOTS: its name and the steps (JavaScript run in the page) that
 lead to it from a fresh start.
 """
+import os
 import re
 import shutil
 import subprocess
@@ -60,7 +61,8 @@ def main():
     server = procs.start(
         [sys.executable, str(plugin / "server" / "rft_server.py"), "--vault", str(tmp / "demo" / "vault"), "--web", str(plugin / "web"),
          "--port", "0", "--project", "small-data-regularisation", "--no-watch"],
-        stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True)
+        # the page with no agents set up, whatever ~/.config/rft/agents.toml holds on the machine the pictures are taken on
+        stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True, env={**os.environ, "RFT_AGENTS": str(tmp / "no-agents.toml")})
     chrome = None
     try:
         url = re.search(r"RFT_SERVER_URL (\S+)", server.stdout.readline()).group(1)
