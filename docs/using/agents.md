@@ -4,8 +4,8 @@ rft was made for Claude Code, and Claude Code is still what manages the tree. Bu
 work can go to other agents that you set up: a model on your own machine for a quick comment
 on a paragraph, another provider's model, another harness. You set them up once, from the page
 or in a file of your own, and pick beside the button who does a task. Until you do, nothing
-changes: the page has the connected Claude Code chat alone, and one small **Set up an agent**
-where the picker will stand.
+changes: the page has the connected Claude Code chat alone, with **Agents…** in its top bar and
+one small **Set up an agent** where the picker will stand.
 
 An **agent** is one of two things:
 
@@ -37,10 +37,13 @@ The setup is one file, `~/.config/rft/agents.toml` (or the file `RFT_AGENTS` nam
 yours, not the project's: a vault holds no agent list and no key. It is read again whenever it
 changes, so nothing is restarted. You can fill it from the page or write it yourself.
 
-**From the page.** Where the picker stands (above a note's threads, above the inbox's list), a
-small **Set up an agent** opens the setup; once you have an agent it reads **Agents…**, beside
-the picker. It lists your agents and adds, changes or removes one at a time, writing the file
-for you and leaving every other line of it as it is, your comments included.
+**From the page.** **Agents…** in the top bar opens the setup (on a phone it is in the menu
+behind ⋯). It is shown on the page opened with the address `/rft` printed, which carries the
+vault's key: a page without the key may not change the setup. The same way in stands where the
+picker stands, above the threads of a note that has an open one and above an inbox that has
+items: a small **Set up an agent**, which reads **Agents…**, beside the picker, once you have
+an agent. The setup lists your agents and adds, changes or removes one at a time, writing the
+file for you and leaving every other line of it as it is, your comments included.
 
 - **A model**: give it a name and say where it is. Nothing is assumed: type the address its
   server prints, ending in `/v1` (for Ollama on the same machine that is usually
