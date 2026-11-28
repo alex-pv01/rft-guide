@@ -56,7 +56,7 @@ class AgentsPage(unittest.TestCase):
             self.assertIn("was not seen here", self.page)
         # the page's words for the setup's buttons are the ones the page of the plugin draws
         dialog = (PLUGIN / "web" / "agents.js").read_text(encoding="utf-8")
-        for button in ("Set up an agent", "Agents…", "List its models", "Change", "Remove", "What it is", "Answers by", "Process with"):
+        for button in ("Set up an agent", "Agents…", "List its models", "Change", "Remove", "What it is", "Answers by", "Process with", "Seconds for a thread", "Seconds for Process"):
             self.assertIn(button, self.page)
             self.assertIn(button, dialog)
         for where in ("runs on this machine", "runs here, sends text to its provider"):

@@ -53,6 +53,9 @@ file for you and leaving every other line of it as it is, your comments included
   key pasted in its place is refused. When the variable is not set where the server runs, the
   agent is saved and shown out of reach, saying so.
 - **Claude Code and Codex** are added the same way: pick one under *What it is*, and its grant.
+- **Seconds for a thread** is how long the agent has to answer one; a harness also has
+  **Seconds for Process**. Leave one empty for the default (120 and 600), or give up to 3600.
+  The list above the form says a time that is not the default.
 - **Remove** takes two presses. A removed agent is no longer anyone's default.
 - A harness of your own, by its commands, is not added from the page: write it in the file, as
   below. A wrong command there is what would break the lock, so it is yours to type.
@@ -125,11 +128,10 @@ its entry says otherwise). An answer that never came, or that could not be used,
 nothing in the vault and says why on the row until you ask again. If the server is restarted
 while an agent is at a thread, the thread says so and can be asked again.
 
-An agent that ran out of time says which line gives it longer: `thread_seconds` or
-`process_seconds` in its entry of the setup file, in seconds, up to 3600 (an hour). Any entry
-takes them, a model's too, and the setup from the page leaves them as you wrote them. A model
-running on a processor alone, with a long note to read, can need several minutes: a line
-`thread_seconds = 600` under its `[agents.qwen]` gives it ten.
+An agent that ran out of time says what gives it longer: **Seconds for a thread** or
+**Seconds for Process** in the setup (**Agents…**), which are the lines `thread_seconds` and
+`process_seconds` of its entry in the file, up to 3600 (an hour). A model running on a
+processor alone, with a long note to read, can need several minutes: 600 gives it ten.
 
 What an agent wrote carries its name: on its message in a thread, and in the heading of its
 impression in a reading note. Claude, in a chat, is told which messages and impressions are
