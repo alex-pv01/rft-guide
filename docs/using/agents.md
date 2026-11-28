@@ -110,8 +110,8 @@ In the page, a picker stands beside the buttons that ask. **Answers by** is in t
 you write a comment or a suggestion, so the first one of a note can already go to an agent of
 yours, and above the open threads, in a note and in a document of the Manuscript alike: it is
 one pick, wherever you make it. **Process with** is above the inbox's list. The picker lists
-the connected Claude Code chat and your agents, says of each where it runs (*runs on this
-machine*, *sends text to* the host a model is sent to, or, for a harness,
+the connected Claude Code chat and your agents, says of each where it runs
+(*runs on this machine*, *sends text to* the host a model is sent to, or, for a harness,
 *runs here, sends text to its provider*), and leaves out of reach, with the reason, those that
 may not take the task. The buttons then name who is picked: **Ask qwen**, **Post and ask qwen**.
 
@@ -124,6 +124,12 @@ a time per thread or item, and a time limit (two minutes for a thread, ten for P
 its entry says otherwise). An answer that never came, or that could not be used, changes
 nothing in the vault and says why on the row until you ask again. If the server is restarted
 while an agent is at a thread, the thread says so and can be asked again.
+
+An agent that ran out of time says which line gives it longer: `thread_seconds` or
+`process_seconds` in its entry of the setup file, in seconds, up to 3600 (an hour). Any entry
+takes them, a model's too, and the setup from the page leaves them as you wrote them. A model
+running on a processor alone, with a long note to read, can need several minutes: a line
+`thread_seconds = 600` under its `[agents.qwen]` gives it ten.
 
 What an agent wrote carries its name: on its message in a thread, and in the heading of its
 impression in a reading note. Claude, in a chat, is told which messages and impressions are
