@@ -32,10 +32,6 @@ The pages are plain markdown under `docs/`, and `zensical.toml` holds the naviga
 - `scripts/check_agents.py`: the Agents page's example setup is loaded with the plugin's own
   reader, and the page is checked against what the code does. It was the plugin's test of its
   README; it moved here with the text. Run it when the Agents page or the plugin's agents change.
-- `scripts/split_readme.py` and `scripts/check_move.py`: for the move out of the plugin's long
-  README only. The first writes the pages from it; the second checks that no paragraph was lost
-  and that each page reads as the README did on GitHub (`pip install -r requirements-dev.txt`).
-  Both are deleted once the pages here are the source.
 
 ## When the plugin changes
 
