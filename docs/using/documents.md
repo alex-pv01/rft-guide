@@ -101,10 +101,9 @@ With 1k images, CutMix reaches 73.2\% \cite{yun2019cutmix}.   that say its kind 
       delete those lines, save, then Push records the merge.
     - **From a repository…**, in the New document form, makes a document from a repository that
       already exists (a paper started in Overleaf): its files as they came, nothing tied to your
-      tree yet. Select a passage and **Selection is a copy** ties it to a snippet; in such a
-      document the file is left as it is (no marker lines are written around a co-author's text;
-      the copy is found by its text, and offered its marker lines). Traces found in what came are
-      listed, not removed.
+      tree yet. Select a passage and **Selection is a copy** ties it to a snippet, between two
+      marker lines as in any document: your co-authors will see those two comment lines in the
+      file. Traces found in what came are listed, not removed.
     - Claude never pulls or pushes: there is no tool for it, and its git commands against a
       document's repository are refused.
 - **A document is reused** from **More…** in the file list:
@@ -145,8 +144,11 @@ With 1k images, CutMix reaches 73.2\% \cite{yun2019cutmix}.   that say its kind 
   mine**. A number someone changed in the document is listed as no longer the tree's.
 - **A copy is found by its marker lines**, so ask co-authors to leave them in place. One whose
   marker lines were deleted is found by its text (and offered them back); one whose text was
-  rewritten too is **lost**: select the passage and **It is the selection**, or **Drop** it. A
-  passage a co-author wrote can be tied to a snippet the same way (**Selection is a copy**).
+  rewritten too is **lost**: select the passage and **It is the selection**, or **Drop** it.
+  Writing its two marker lines back by hand around the passage does the same: the first line
+  holds the words listed beside it under **Lost copies** (`%%% Definition: CutMix %%%`; spacing
+  and capitals do not count), the second is `%%% end %%%`. A passage a co-author wrote can be
+  tied to a snippet the same way (**Selection is a copy**).
 - **Traces of the tree** in a document's files are listed in the tab: a macro or a name of the
   plugin, the id of a note or a snippet of this vault in a text or a file's name, an entry of the
   tree the document does not cite. **Allow** remembers one that is a false alarm. `rft_validate`
