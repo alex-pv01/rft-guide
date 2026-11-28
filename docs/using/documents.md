@@ -104,6 +104,19 @@ With 1k images, CutMix reaches 73.2\% \cite{yun2019cutmix}.   that say its kind 
       tree yet. Select a passage and **Selection is a copy** ties it to a snippet, between two
       marker lines as in any document: your co-authors will see those two comment lines in the
       file. Traces found in what came are listed, not removed.
+    - **The page runs git without a prompt**, so it cannot ask what a terminal would ask. When the
+      remote cannot be reached for one of these reasons, the page says which, after git's own words:
+        - *A key with a passphrase.* Give ssh an agent that holds the key. In a terminal:
+          `ssh-agent -a ~/.ssh/agent.sock`, then
+          `SSH_AUTH_SOCK=~/.ssh/agent.sock ssh-add ~/.ssh/id_ed25519`, which asks the passphrase.
+          Then, in `~/.ssh/config`, under `Host github.com`, the line
+          `IdentityAgent ~/.ssh/agent.sock`. Nothing needs restarting. The agent lasts until the
+          machine restarts: run the two commands again then. A public repository needs no key:
+          give its `https://` address.
+        - *A host this machine never connected to.* Run `ssh -T git@gitlab.com` (with your host)
+          once in a terminal and accept its key.
+        - *A host that shows another key than the one this machine has for it.* Find out why
+          before changing `~/.ssh/known_hosts`.
     - Claude never pulls or pushes: there is no tool for it, and its git commands against a
       document's repository are refused.
 - **A document is reused** from **More…** in the file list:
