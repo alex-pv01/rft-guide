@@ -95,6 +95,34 @@ thread_seconds = 120       # how long it has for a thread (the default) and for 
 process_seconds = 900
 ```
 
+## A first local model
+
+These steps were run once, on 2026-11-28, with Ollama 0.15 and `qwen3:8b` on a Linux
+workstation. They take a model from nothing to its first answer on a thread.
+
+1. **Start Ollama with room for a note.** Ollama keeps 4096 tokens of a prompt unless told
+   otherwise, and cuts a longer one without telling whoever asked. A thread's prompt holds the
+   note it is on (up to 60,000 characters of it), so give it more:
+
+    ```sh
+    OLLAMA_CONTEXT_LENGTH=16384 ollama serve
+    ```
+
+    Its log says `truncating input prompt` when a prompt was cut. On the same line,
+    `OLLAMA_MODELS=<a folder>` keeps the models somewhere other than your home folder, and
+    `CUDA_VISIBLE_DEVICES=<number>` picks the graphics card (`-1`: none).
+
+2. **Pull a model**, in another terminal: `ollama pull qwen3:8b` (5.2 GB).
+3. **Add it in the page**: **Agents…**, a name, the address `http://localhost:11434/v1`,
+   **List its models**, pick it, **Save**.
+4. **Ask it**: select text in a note, **Comment**, pick the agent under **Answers by**, then
+   **Post and ask**.
+
+What was seen there: on a graphics card the model took 7.8 GB at that context and answered a
+short note in 4 to 16 seconds. On the processor alone it did not answer a note of about 7,000
+tokens within the two minutes a thread has by default; **Seconds for a thread** in the setup
+gives it longer.
+
 ## The ready-made harnesses
 
 `kind = "claude-code"` and `kind = "codex"` are ready-made harness entries (`model = "..."`
