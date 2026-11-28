@@ -95,8 +95,9 @@
       suggestion gets its new text as a replacement for you to accept or reject. The subagent only
       reads; the note changes only when you accept. When no subagent can start, the thread goes to
       the session as a turn of its own. With [agents of your own](agents.md) set up, a picker
-      above the threads says who answers, the buttons name it (**Ask qwen**), and the answer is
-      signed with its name.
+      (**Answers by**), in the box you write in and above the threads, says who answers, the
+      buttons name it (**Ask qwen**, **Post and ask qwen**), and the answer is signed with its
+      name.
     - A thread keeps its quote and the text around it, so it is found again after the note is
       edited. When the quoted text itself changed, the thread says what it now reads, and its
       suggestion can no longer be accepted. When the text is gone, the thread says so.

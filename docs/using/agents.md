@@ -106,10 +106,12 @@ and says in its answer that it could not see the project.
 
 ## Picking who does a task
 
-In the page, a picker stands beside the buttons that ask: above a note's threads and the
-Manuscript's (**Answers by**), and above the inbox's list (**Process with**). It lists the
-connected Claude Code chat and your agents, says of each where it runs (*runs on this machine*,
-*sends text to* the host a model is sent to, or, for a harness,
+In the page, a picker stands beside the buttons that ask. **Answers by** is in the box where
+you write a comment or a suggestion, so the first one of a note can already go to an agent of
+yours, and above the open threads, in a note and in a document of the Manuscript alike: it is
+one pick, wherever you make it. **Process with** is above the inbox's list. The picker lists
+the connected Claude Code chat and your agents, says of each where it runs (*runs on this
+machine*, *sends text to* the host a model is sent to, or, for a harness,
 *runs here, sends text to its provider*), and leaves out of reach, with the reason, those that
 may not take the task. The buttons then name who is picked: **Ask qwen**, **Post and ask qwen**.
 

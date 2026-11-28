@@ -197,6 +197,7 @@ With 1k images, CutMix reaches 73.2\% \cite{yun2019cutmix}.   that say its kind 
       PDF.
     - **Save** writes the file (a file changed meanwhile asks first); Ctrl/Cmd+S saves and compiles.
       Select text and choose **Comment** or **Suggest** to discuss it, with **Ask Claude**, **Accept**
-      and the rest. `?view=manuscript&snippet=S04` or `&doc=paper` opens one. Compiling needs
+      and the rest (with [agents of your own](agents.md), **Answers by** in the box you write in
+      picks who is asked). `?view=manuscript&snippet=S04` or `&doc=paper` opens one. Compiling needs
       `latexmk` on `PATH` (TeX Live), shell escape off, and the page's key; the PDF goes only to the
       page carrying it. `/rft-view` leaves the tab out.
